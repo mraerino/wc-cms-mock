@@ -1,0 +1,35 @@
+{
+  "name": "wc-cms-mock",
+  "version": "1.0.0",
+  "main": "index.html",
+  "author": "Marcus Weiner <github.com/mraerino>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "gray-matter": "^3.1.0",
+    "js-yaml": "^3.10.0",
+    "lodash-es": "^4.17.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.18.13",
+    "event-stream": "^3.3.4",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-debug": "^3.1.0",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "rollup": "^0.50.0",
+    "rollup-plugin-commonjs": "^8.2.4",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.1.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-stream": "^1.24.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "serve": "gulp serve"
+  }
+}
