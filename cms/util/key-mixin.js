@@ -1,4 +1,8 @@
 export default function(superClass) {
+
+    /**
+     * @param {String} key
+     */
     class KeyMixin extends superClass {
         constructor() {
             super();

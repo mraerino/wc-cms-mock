@@ -22,7 +22,7 @@ export class WcmsValue extends ValueMixin(ContentMixin(KeyMixin(HTMLElement))) {
     }
 
     fetchValue() {
-        const value = this.getMetaValue(this._key);
+        const value = this.getMetaValue(this.key);
         if(value === undefined) {
             return;
         }
