@@ -1,8 +1,7 @@
-import KeyMixin from './util/key-mixin.js';
-import ContentMixin from './util/content-mixin.js';
+import ContentValueMixin from './util/content-value-mixin.js';
 import get from '../node_modules/lodash-es/get.js';
 
-export class WcmsRepeat extends ContentMixin(KeyMixin(HTMLElement)) {
+export class WcmsRepeat extends ContentValueMixin(HTMLElement) {
     constructor() {
         super();
 
@@ -20,13 +19,15 @@ export class WcmsRepeat extends ContentMixin(KeyMixin(HTMLElement)) {
         this.renderContent();
     }
 
-    set key(val) {
-        super.key = val;
-        this.renderContent();
+    set value(val) {
+        if(super.value !== val) {
+            this.renderContent();
+        }
+        super.value = val;
     }
 
-    get key() {
-        return super.key;
+    get value() {
+        return super.value;
     }
 
     renderContent() {
@@ -34,13 +35,12 @@ export class WcmsRepeat extends ContentMixin(KeyMixin(HTMLElement)) {
             return;
         }
 
-        const value = this.getMetaValue(this.key);
-        if(!(value instanceof Array)) {
+        if(!(this.value instanceof Array)) {
             return;
         }
 
         this.textContent = "";
-        value.forEach(item => {
+        this.value.forEach(item => {
             const clone = document.importNode(this._template.content, true);
             clone.querySelectorAll('wcms-value[item-key]').forEach(elem => {
                 const value = get(item, elem.getAttribute('item-key'));
