@@ -10,6 +10,8 @@ export class WcmsRepeat extends ContentMixin(KeyMixin(HTMLElement)) {
     }
 
     connectedCallback() {
+        super.connectedCallback();
+
         this._template = this.querySelector('template');
         if(!this._template || !('content' in this._template)) {
             console.warn("wcms-repeat elements need to be initialized with a template element");
