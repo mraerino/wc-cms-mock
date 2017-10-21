@@ -28,10 +28,11 @@ export class WcmsAttribute extends ContentValueMixin(HTMLElement) {
     }
 
     set value(val) {
-        if(super.value !== val) {
-            this.applyAttribute();
+        if(super.value === val) {
+            return;
         }
         super.value = val;
+        this.applyAttribute();
     }
 
     get value() {
@@ -39,10 +40,13 @@ export class WcmsAttribute extends ContentValueMixin(HTMLElement) {
     }
 
     set name(val) {
-        if(this._name !== val) {
-            this.applyAttribute();
+        super.name = val;
+        if(this._name === val) {
+            return;
         }
+
         this._name = val;
+        this.applyAttribute();
     }
 
     get name() {

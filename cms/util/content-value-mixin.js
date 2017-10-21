@@ -11,10 +11,11 @@ export default function(superClass) {
         }
 
         set key(val) {
-            if(super.key !== val) {
-                this.fetchValue();
+            if(super.key === val) {
+                return;
             }
             super.key = val;
+            this.fetchValue();
         }
 
         get key() {

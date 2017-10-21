@@ -20,10 +20,11 @@ export class WcmsRepeat extends ContentValueMixin(HTMLElement) {
     }
 
     set value(val) {
-        if(super.value !== val) {
-            this.renderContent();
+        if(super.value === val) {
+            return;
         }
         super.value = val;
+        this.renderContent();
     }
 
     get value() {

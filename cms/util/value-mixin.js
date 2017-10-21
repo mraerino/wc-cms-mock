@@ -20,6 +20,7 @@ export default function(superClass) {
         }
 
         set value(val) {
+            super.value = val;
             this._value = val;
         }
 
