@@ -3,17 +3,13 @@ import trimStart from '../../node_modules/lodash-es/trimStart.js';
 import get from '../../node_modules/lodash-es/get.js';
 
 /**
- * @param {HTMLElement} superClass
+ * @param superClass
  * @returns {ContentMixin}
  */
 export default function(superClass) {
     class ContentMixin extends superClass {
         constructor() {
             super();
-
-            if(!HTMLElement.isPrototypeOf(superClass)) {
-                throw new Error("Superclass needs to be a child of HTMLElement");
-            }
 
             //init
             this._content = undefined;
