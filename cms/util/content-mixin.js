@@ -17,7 +17,9 @@ export default function(superClass) {
         }
 
         connectedCallback() {
-            super.connectedCallback();
+            if(super.connectedCallback) {
+                super.connectedCallback();
+            }
 
             const pageName = (location.pathname.endsWith('/')
                     ? 'index.html'
