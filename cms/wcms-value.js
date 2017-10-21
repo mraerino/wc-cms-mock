@@ -16,9 +16,17 @@ export class WcmsValue extends ValueMixin(ContentMixin(KeyMixin(HTMLElement))) {
         this.textContent = this._value;
     }
 
+    get value() {
+        return super.value;
+    }
+
     set key(val) {
         super.key = val;
         this.fetchValue();
+    }
+
+    get key() {
+        return super.key;
     }
 
     fetchValue() {

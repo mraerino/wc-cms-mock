@@ -20,6 +20,10 @@ export class WcmsGlobal extends KeyMixin(HTMLElement) {
         this.insertValue();
     }
 
+    get key() {
+        return super.key;
+    }
+
     insertValue() {
         this.textContent = (this._key in this._config) ? this._config[this._key] : "";
     }
