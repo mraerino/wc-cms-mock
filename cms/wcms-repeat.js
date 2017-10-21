@@ -18,6 +18,15 @@ export class WcmsRepeat extends ContentMixin(KeyMixin(HTMLElement)) {
         this.renderContent();
     }
 
+    set key(val) {
+        super.key = val;
+        this.renderContent();
+    }
+
+    get key() {
+        return super.key;
+    }
+
     renderContent() {
         if(!this._template || !('content' in this._template)) {
             return;
