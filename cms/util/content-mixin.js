@@ -14,6 +14,10 @@ export default function(superClass) {
             //init
             this._content = undefined;
             this._data = {};
+        }
+
+        connectedCallback() {
+            super.connectedCallback();
 
             const pageName = (location.pathname.endsWith('/')
                     ? 'index.html'
