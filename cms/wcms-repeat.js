@@ -42,7 +42,7 @@ export class WcmsRepeat extends ContentValueMixin(HTMLElement) {
         this.textContent = "";
         this.value.forEach(item => {
             const clone = document.importNode(this._template.content, true);
-            clone.querySelectorAll('wcms-value[item-key]').forEach(elem => {
+            clone.querySelectorAll('[item-key]').forEach(elem => {
                 const value = get(item, elem.getAttribute('item-key'));
                 if(value !== undefined) {
                     elem.value = value;
