@@ -29,5 +29,5 @@ export default function(superClass) {
 
     }
 
-    return valueMixin;
+    return ValueMixin;
 }
