@@ -1,17 +1,52 @@
 import KeyMixin from './key-mixin.js';
-import ContentMixin from './content-mixin.js';
 import ValueMixin from './value-mixin.js';
-import GlobalMixin from './global-mixin.js';
+import isChildClass from './prototypeChain.js';
+import { tagName as providerTagName } from '../wcms-provider.js';
 
+/**
+ * @param {HTMLElement} superClass
+ * @returns {ContentValueMixin}
+ */
 export default function(superClass) {
-    class ContentValueMixin extends ValueMixin(GlobalMixin(ContentMixin(KeyMixin(superClass)))) {
+    if(!isChildClass(superClass, HTMLElement)) {
+        throw new TypeError("This mixin needs to be used with a super class based on HTMLElement.");
+    }
+
+    class ContentValueMixin extends ValueMixin(KeyMixin(superClass)) {
         constructor() {
             super();
 
             this._global = false;
+            this._provider = null;
+            this._shadowRoot = null;
+        }
 
-            this.addEventListener('content-changed', () => !this.global && this.fetchValue());
-            this.addEventListener('global-changed', () => this.global && this.fetchValue());
+        connectedCallback() {
+            if(super.connectedCallback) {
+                super.connectedCallback();
+            }
+
+            // determine provider
+            this._provider = document.body.querySelector(providerTagName);
+            if(!!this._provider) {
+                this._setupListeners();
+                this.fetchValue();
+                return;
+            }
+
+            // create provider within shadow dom
+            this._shadowRoot = this.attachShadow({mode: 'open'});
+            // slot for light dom
+            this._shadowRoot.appendChild(document.createElement('slot'));
+            this._provider = document.createElement(providerTagName);
+            this._setupListeners();
+            this._shadowRoot.appendChild(this._provider);
+            this.fetchValue();
+        }
+
+        _setupListeners() {
+            this._provider.addEventListener('data-changed', () => !this.global && this.fetchValue());
+            this._provider.addEventListener('site-changed', () => this.global && this.fetchValue());
         }
 
         static get observedAttributes() {
@@ -57,9 +92,13 @@ export default function(superClass) {
         }
 
         fetchValue() {
+            if(!this._provider) {
+                return;
+            }
+
             const value = !this.global
-                ? this.getMetaValue(this.key)
-                : this.getGlobalValue(this.key);
+                ? this._provider.getPageValue(this.key)
+                : this._provider.getGlobalValue(this.key);
             if(value === undefined) {
                 return;
             }
