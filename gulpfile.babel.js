@@ -13,8 +13,21 @@ const dist = "dist";
 const tmp = ".tmp";
 const browserSync = BrowserSync.create();
 
+let watchPhase = false;
+
+const handleErrors = (plugin, name) => {
+    plugin.on('error', err => {
+        if(!watchPhase) {
+            throw new gutil.PluginError(name, err)
+        }
+        gutil.log(gutil.colors.red(`[${name}]`), err);
+        plugin.emit('end');
+    });
+    return plugin;
+};
+
 gulp.task("js", () =>
-    rollup(Object.assign({}, rollupConfig))
+    handleErrors(rollup(Object.assign({}, rollupConfig)), "rollup")
         .pipe(source(path.join('cms', 'index.js')))
         .pipe(gulp.dest(tmp))
         .pipe(gulp.dest(dist))
@@ -29,6 +42,6 @@ gulp.task('serve', ['js'], () => {
         open: false
     });
 
-    watch("cms/**/*.js", () => { gulp.start(["js"]) });
+    watch("cms/**/*.js", () => { watchPhase = true; gulp.start(["js"]) });
     watch("**/*.html", () => { browserSync.reload() });
 });
