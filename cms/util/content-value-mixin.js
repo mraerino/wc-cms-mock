@@ -1,7 +1,7 @@
-import KeyMixin from './key-mixin.js';
-import ValueMixin from './value-mixin.js';
-import isChildClass from './prototypeChain.js';
-import { tagName as providerTagName } from '../wcms-provider.js';
+import KeyMixin from './key-mixin';
+import ValueMixin from './value-mixin';
+import isChildClass from './prototypeChain';
+import { tagName as providerTagName } from '../wcms-provider';
 
 /**
  * @param {HTMLElement} superClass

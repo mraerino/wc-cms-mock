@@ -1,4 +1,4 @@
-import "./wcms-value.js";
-import "./wcms-repeat.js";
-import "./wcms-attribute.js";
-import "./wcms-provider.js";
+import "./wcms-value";
+import "./wcms-repeat";
+import "./wcms-attribute";
+import "./wcms-provider";

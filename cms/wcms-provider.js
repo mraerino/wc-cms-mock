@@ -1,7 +1,7 @@
 import jsYaml from 'js-yaml';
-import get from '../node_modules/lodash-es/get.js';
-import trimStart from '../node_modules/lodash-es/trimStart.js';
-import loadmd from './util/loadmd.js';
+import get from '../node_modules/lodash-es/get';
+import trimStart from '../node_modules/lodash-es/trimStart';
+import loadmd from './util/loadmd';
 
 /**
  * Fetches data needed to render a preview for a single site

@@ -1,5 +1,5 @@
 import jsYaml from 'js-yaml';
-import get from '../../node_modules/lodash-es/get.js';
+import get from '../../node_modules/lodash-es/get';
 
 export default function(superClass) {
     class GlobalMixin extends superClass {

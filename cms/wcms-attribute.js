@@ -1,4 +1,4 @@
-import ContentValueMixin from './util/content-value-mixin.js';
+import ContentValueMixin from './util/content-value-mixin';
 
 export class WcmsAttribute extends ContentValueMixin(HTMLElement) {
     constructor() {

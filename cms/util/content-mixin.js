@@ -1,6 +1,6 @@
-import loadmd from './loadmd.js';
-import trimStart from '../../node_modules/lodash-es/trimStart.js';
-import get from '../../node_modules/lodash-es/get.js';
+import loadmd from './loadmd';
+import trimStart from '../../node_modules/lodash-es/trimStart';
+import get from '../../node_modules/lodash-es/get';
 
 /**
  * @param superClass

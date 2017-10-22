@@ -1,5 +1,5 @@
-import ContentValueMixin from './util/content-value-mixin.js';
-import get from '../node_modules/lodash-es/get.js';
+import ContentValueMixin from './util/content-value-mixin';
+import get from '../node_modules/lodash-es/get';
 
 export class WcmsRepeat extends ContentValueMixin(HTMLElement) {
     constructor() {
