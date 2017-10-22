@@ -92,17 +92,14 @@ export default function(superClass) {
         }
 
         fetchValue() {
-            if(!this._provider) {
+            if(!this._provider || !this.key || this.key === "") {
                 return;
             }
 
             const value = !this.global
                 ? this._provider.getPageValue(this.key)
                 : this._provider.getGlobalValue(this.key);
-            if(value === undefined) {
-                return;
-            }
-            this.value = value;
+            this.value = value === undefined ? "" : value;
             this.dispatchEvent(new CustomEvent('value-changed', { detail: { value: this.value } }));
         }
     }
