@@ -10,16 +10,13 @@ export default function(superClass) {
             this.addEventListener('content-changed', () => this.fetchValue());
         }
 
-        set key(val) {
+        _setKey(val) {
             if(super.key === val) {
                 return;
             }
-            super.key = val;
-            this.fetchValue();
-        }
+            super._setKey(val);
 
-        get key() {
-            return super.key;
+            this.fetchValue();
         }
 
         fetchValue() {

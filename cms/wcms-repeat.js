@@ -19,16 +19,13 @@ export class WcmsRepeat extends ContentValueMixin(HTMLElement) {
         this.renderContent();
     }
 
-    set value(val) {
+    _setValue(val) {
         if(super.value === val) {
             return;
         }
-        super.value = val;
-        this.renderContent();
-    }
+        super._setValue(val);
 
-    get value() {
-        return super.value;
+        this.renderContent();
     }
 
     renderContent() {

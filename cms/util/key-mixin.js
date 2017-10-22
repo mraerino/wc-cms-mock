@@ -23,7 +23,14 @@ export default function(superClass) {
         }
 
         set key(val) {
-            super.key = val;
+            this._setKey(val);
+        }
+
+        _setKey(val) {
+            if(super._setKey) {
+                super._setKey(val);
+            }
+
             if(this._key === val) {
                 return;
             }

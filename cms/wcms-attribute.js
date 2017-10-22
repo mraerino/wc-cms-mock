@@ -27,20 +27,16 @@ export class WcmsAttribute extends ContentValueMixin(HTMLElement) {
         return super.attributeChangedCallback(attrName, oldVal, newVal);
     }
 
-    set value(val) {
+    _setValue(val) {
         if(super.value === val) {
             return;
         }
-        super.value = val;
+        super._setValue(val);
+
         this.applyAttribute();
     }
 
-    get value() {
-        return super.value;
-    }
-
     set name(val) {
-        super.name = val;
         if(this._name === val) {
             return;
         }
