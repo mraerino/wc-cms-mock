@@ -15,8 +15,6 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.18.13",
-    "event-stream": "^3.3.4",
-    "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "gulp-debug": "^3.1.0",
     "gulp-util": "^3.0.8",
